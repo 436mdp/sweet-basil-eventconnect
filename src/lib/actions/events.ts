@@ -6,6 +6,7 @@ import { nanoid } from "nanoid";
 import { createClient } from "@/lib/supabase/server";
 import { requireAdmin } from "@/lib/auth/guards";
 import { generateEventQR } from "@/lib/qr";
+import { getPublicStorageUrl } from "@/lib/utils";
 import { createEventSchema, updateEventSchema } from "@/lib/validations/event.schema";
 import type { EventStatus } from "@/types/database.types";
 
@@ -29,6 +30,25 @@ export async function createEvent(formData: FormData) {
   const slug = nanoid(10);
   const qrCodeUrl = await generateEventQR(slug);
 
+  let coverImageUrl = parsed.data.coverImage || null;
+  const coverFile = formData.get("coverImageFile") as File | null;
+  if (coverFile?.size) {
+    const safeName = coverFile.name.replace(/[^a-zA-Z0-9._-]/g, "_");
+    const storagePath = `cover-images/${slug}/${nanoid()}-${safeName}`;
+    const buffer = Buffer.from(await coverFile.arrayBuffer());
+
+    const { error: uploadError } = await supabase.storage
+      .from("event-images")
+      .upload(storagePath, buffer, {
+        contentType: coverFile.type,
+        upsert: false,
+      });
+
+    if (uploadError) return { error: uploadError.message };
+
+    coverImageUrl = getPublicStorageUrl(storagePath);
+  }
+
   const { data, error } = await supabase
     .from("events")
     .insert({
@@ -38,7 +58,7 @@ export async function createEvent(formData: FormData) {
       venue: parsed.data.venue ?? null,
       event_date: parsed.data.eventDate,
       status: parsed.data.status,
-      cover_image: parsed.data.coverImage || null,
+      cover_image: coverImageUrl,
       qr_code_url: qrCodeUrl,
       created_by: ctx.userId,
     })
@@ -81,7 +101,26 @@ export async function updateEvent(formData: FormData) {
   const { id, eventDate, coverImage, ...rest } = parsed.data;
   const updates: Record<string, unknown> = { ...rest };
   if (eventDate) updates.event_date = eventDate;
-  if (coverImage !== undefined) updates.cover_image = coverImage || null;
+
+  const coverFile = formData.get("coverImageFile") as File | null;
+  if (coverFile?.size) {
+    const safeName = coverFile.name.replace(/[^a-zA-Z0-9._-]/g, "_");
+    const storagePath = `cover-images/${id}/${nanoid()}-${safeName}`;
+    const buffer = Buffer.from(await coverFile.arrayBuffer());
+
+    const { error: uploadError } = await supabase.storage
+      .from("event-images")
+      .upload(storagePath, buffer, {
+        contentType: coverFile.type,
+        upsert: false,
+      });
+
+    if (uploadError) return { error: uploadError.message };
+
+    updates.cover_image = getPublicStorageUrl(storagePath);
+  } else if (coverImage !== undefined) {
+    updates.cover_image = coverImage || null;
+  }
 
   const { error } = await supabase.from("events").update(updates).eq("id", id);
   if (error) return { error: error.message };

@@ -78,8 +78,19 @@ export function EventForm({ event, onSuccess }: EventFormProps) {
             </div>
           </div>
           <div>
-            <Label htmlFor="coverImage">Cover Image URL</Label>
-            <Input id="coverImage" name="coverImage" type="url" defaultValue={event?.cover_image ?? ""} className="mt-1" />
+            <Label htmlFor="coverImageFile">Cover Image</Label>
+            <Input
+              id="coverImageFile"
+              name="coverImageFile"
+              type="file"
+              accept="image/jpeg,image/png,image/webp"
+              className="mt-1"
+            />
+            {event?.cover_image && (
+              <div className="mt-3 rounded-xl overflow-hidden border bg-muted">
+                <img src={event.cover_image} alt="Current cover" className="h-40 w-full object-cover" />
+              </div>
+            )}
           </div>
           <div>
             <Label>Status</Label>
