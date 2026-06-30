@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { register, signInWithGoogle } from "@/lib/actions/auth";
+import { register } from "@/lib/actions/auth";
 
 export default function RegisterPage() {
   const [loading, setLoading] = useState(false);
@@ -15,15 +15,6 @@ export default function RegisterPage() {
   const handleSubmit = async (formData: FormData) => {
     setLoading(true);
     const result = await register(formData);
-    if (result?.error) {
-      toast.error(result.error);
-      setLoading(false);
-    }
-  };
-
-  const handleGoogle = async () => {
-    setLoading(true);
-    const result = await signInWithGoogle();
     if (result?.error) {
       toast.error(result.error);
       setLoading(false);
@@ -58,19 +49,6 @@ export default function RegisterPage() {
               {loading ? "Creating account..." : "Create Account"}
             </Button>
           </form>
-
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <span className="w-full border-t" />
-            </div>
-            <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-card px-2 text-muted-foreground">Or continue with</span>
-            </div>
-          </div>
-
-          <Button variant="outline" className="w-full" onClick={handleGoogle} disabled={loading}>
-            Continue with Google
-          </Button>
 
           <p className="text-center text-sm text-muted-foreground">
             Already have an account?{" "}
