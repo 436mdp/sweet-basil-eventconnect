@@ -202,7 +202,6 @@ export function MasonryGallery({ eventId, initialPhotos, uploaders }: MasonryGal
               <div className="mt-4 flex items-center justify-between rounded-xl bg-card p-4">
                 <div>
                   <p className="font-medium">{selectedPhoto.uploader_name}</p>
-                  <p className="text-sm text-muted-foreground">{selectedPhoto.file_name}</p>
                 </div>
                 <div className="flex gap-2">
                   <Button size="icon" variant="outline" onClick={() => handleShare(selectedPhoto)}>
