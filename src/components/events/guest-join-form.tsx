@@ -19,16 +19,23 @@ export function GuestJoinForm({ eventSlug, eventId }: GuestJoinFormProps) {
   const router = useRouter();
 
   const handleSubmit = async (formData: FormData) => {
+    if (loading) return;
+
     setLoading(true);
     formData.set("eventSlug", eventSlug);
-    const result = await joinEventAsGuest(formData);
-    if (result.error) {
-      toast.error(result.error);
+
+    try {
+      const result = await joinEventAsGuest(formData);
+      if (result.error) {
+        toast.error(result.error);
+        return;
+      }
+
+      toast.success("Welcome to the event!");
+      router.push(`/events/${eventId}`);
+    } finally {
       setLoading(false);
-      return;
     }
-    toast.success("Welcome to the event!");
-    router.push(`/events/${eventId}`);
   };
 
   return (
@@ -43,7 +50,7 @@ export function GuestJoinForm({ eventSlug, eventId }: GuestJoinFormProps) {
             <Label htmlFor="guestEmail">Email (optional)</Label>
             <Input id="guestEmail" name="guestEmail" type="email" placeholder="you@example.com" className="mt-1" />
           </div>
-          <Button type="submit" className="w-full" disabled={loading}>
+          <Button type="submit" className="w-full" loading={loading}>
             {loading ? "Joining..." : "Join Event"}
           </Button>
         </form>

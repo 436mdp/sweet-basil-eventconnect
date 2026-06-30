@@ -15,21 +15,27 @@ export function JoinEventButton({ eventId, joinAction }: JoinEventButtonProps) {
   const router = useRouter();
 
   const handleJoin = async () => {
+    if (loading) return;
+
     setLoading(true);
-    const result = await joinAction(eventId);
-    if (result.error) {
-      toast.error(result.error);
-    } else {
-      toast.success("You've joined the event!");
-      router.refresh();
+
+    try {
+      const result = await joinAction(eventId);
+      if (result.error) {
+        toast.error(result.error);
+      } else {
+        toast.success("You've joined the event!");
+        router.refresh();
+      }
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   return (
     <div className="mb-8 rounded-xl border bg-card p-6 text-center">
       <p className="mb-4 text-muted-foreground">Join this event to upload and view photos</p>
-      <Button onClick={handleJoin} disabled={loading}>
+      <Button onClick={handleJoin} loading={loading}>
         {loading ? "Joining..." : "Join Event"}
       </Button>
     </div>
