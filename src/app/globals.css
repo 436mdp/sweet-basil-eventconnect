@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
+
+@layer utilities {
+  .masonry-grid {
+    display: flex;
+    margin-left: -16px;
+    width: auto;
+  }
+  .masonry-grid-column {
+    padding-left: 16px;
+    background-clip: padding-box;
+  }
+  .masonry-grid-column > div {
+    margin-bottom: 16px;
+  }
+}
