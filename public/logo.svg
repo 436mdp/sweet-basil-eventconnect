@@ -1,14 +1,22 @@
-<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sweet Basil logo">
+<svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sweet Basil Catering Company logo">
   <defs>
-    <linearGradient id="leafGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#5f7a1f" />
-      <stop offset="100%" stop-color="#98b23f" />
+    <linearGradient id="basilGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4d6a1a" />
+      <stop offset="100%" stop-color="#97b93c" />
     </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#000000" flood-opacity="0.12" />
+    </filter>
   </defs>
-  <circle cx="60" cy="60" r="58" fill="#ffffff" stroke="#e8f0d6" stroke-width="4" />
-  <path d="M34 38C34 26 46 22 56 22c18 0 24 18 24 30c0 18-12 22-22 34c-10 12-10 22 0 30" fill="none" stroke="#5f7a1f" stroke-width="8" stroke-linecap="round" />
-  <path d="M61 44c12 0 20 12 20 24c0 16-14 24-20 32" fill="none" stroke="#5f7a1f" stroke-width="8" stroke-linecap="round" />
-  <path d="M58 14c8 6 14 12 18 18" fill="none" stroke="#98b23f" stroke-width="6" stroke-linecap="round" />
-  <path d="M48 12c-4 6-10 12-16 16" fill="none" stroke="#98b23f" stroke-width="6" stroke-linecap="round" />
-  <path d="M74 16c10 10 16 18 16 26" fill="none" stroke="url(#leafGradient)" stroke-width="7" stroke-linecap="round" />
+
+  <rect width="140" height="140" rx="28" fill="#ffffff" />
+  <rect x="8" y="8" width="124" height="124" rx="24" fill="#f6f7ed" />
+
+  <g filter="url(#shadow)">
+    <path d="M70 32c18 0 16 24 16 24s10-8 18-6c0 0-4 12-18 24c16 0 22 14 16 28c-3 6-10 12-16 12c0 0 4-10 0-18c-6-10-22-8-22-8s10-8 10-16c0-14-14-20-14-20s10-2 12-8c0 0-8-10-8-14s10-4 14-4Z" fill="url(#basilGradient)" />
+    <path d="M74 30c0 12 6 26 18 26" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.55" />
+  </g>
+
+  <text x="70" y="100" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#34421b" font-weight="700">Sweet Basil</text>
+  <text x="70" y="118" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#6b7a3c" letter-spacing="0.14em">CATERING COMPANY</text>
 </svg>
