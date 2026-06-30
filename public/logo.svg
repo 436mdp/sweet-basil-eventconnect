@@ -1,0 +1,14 @@
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sweet Basil logo">
+  <defs>
+    <linearGradient id="leafGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5f7a1f" />
+      <stop offset="100%" stop-color="#98b23f" />
+    </linearGradient>
+  </defs>
+  <circle cx="60" cy="60" r="58" fill="#ffffff" stroke="#e8f0d6" stroke-width="4" />
+  <path d="M34 38C34 26 46 22 56 22c18 0 24 18 24 30c0 18-12 22-22 34c-10 12-10 22 0 30" fill="none" stroke="#5f7a1f" stroke-width="8" stroke-linecap="round" />
+  <path d="M61 44c12 0 20 12 20 24c0 16-14 24-20 32" fill="none" stroke="#5f7a1f" stroke-width="8" stroke-linecap="round" />
+  <path d="M58 14c8 6 14 12 18 18" fill="none" stroke="#98b23f" stroke-width="6" stroke-linecap="round" />
+  <path d="M48 12c-4 6-10 12-16 16" fill="none" stroke="#98b23f" stroke-width="6" stroke-linecap="round" />
+  <path d="M74 16c10 10 16 18 16 26" fill="none" stroke="url(#leafGradient)" stroke-width="7" stroke-linecap="round" />
+</svg>

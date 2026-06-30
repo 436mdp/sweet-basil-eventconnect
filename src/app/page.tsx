@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Camera, QrCode, Users, ImageIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -32,6 +33,9 @@ export default function HomePage() {
       <section className="relative overflow-hidden bg-gradient-to-b from-primary/5 to-background">
         <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-32">
           <div className="mx-auto max-w-3xl text-center">
+            <div className="mx-auto mb-8 h-24 w-24 sm:h-28 sm:w-28">
+              <Image src="/logo.svg" alt="Sweet Basil" width={112} height={112} className="mx-auto" />
+            </div>
             <p className="mb-4 text-sm font-medium uppercase tracking-widest text-secondary">
               Sweet Basil Catering
             </p>
