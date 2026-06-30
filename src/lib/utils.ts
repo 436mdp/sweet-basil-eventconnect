@@ -18,6 +18,8 @@ export function getAppUrl(): string {
 }
 
 export function getPublicStorageUrl(path: string): string {
-  const base = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const base =
+    process.env.NEXT_PUBLIC_SUPABASE_URL ??
+    "https://qnsolnfkccfzmorzdjvh.supabase.co";
   return `${base}/storage/v1/object/public/event-images/${path}`;
 }
