@@ -69,7 +69,7 @@ export default function ContactPage() {
               <Phone className="mt-1 h-5 w-5 text-primary" />
               <div>
                 <h3 className="font-semibold">Phone</h3>
-                <p className="text-muted-foreground">(555) 123-4567</p>
+                <p className="text-muted-foreground">0967 294 8848</p>
               </div>
             </CardContent>
           </Card>
