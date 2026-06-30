@@ -78,7 +78,7 @@ export default function ContactPage() {
               <MapPin className="mt-1 h-5 w-5 text-primary" />
               <div>
                 <h3 className="font-semibold">Location</h3>
-                <p className="text-muted-foreground">Serving celebrations nationwide</p>
+                <p className="text-muted-foreground">24 K-4th Kamuning, Quezon City</p>
               </div>
             </CardContent>
           </Card>
