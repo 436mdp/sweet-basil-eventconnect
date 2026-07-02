@@ -4,7 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const code = searchParams.get("code");
-  const origin = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
+  const origin = process.env.NEXT_PUBLIC_APP_URL ?? "https://evc-sweetbasil.vercel.app/";
 
   if (code) {
     const supabase = await createClient();

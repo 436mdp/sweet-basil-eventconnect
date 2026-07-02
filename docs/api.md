@@ -2,8 +2,8 @@
 
 ## Base URL
 
-- Development: `http://localhost:3000`
-- Production: `https://your-domain.vercel.app`
+- Development: `https://evc-sweetbasil.vercel.app/`
+- Production: `https://evc-sweetbasil.vercel.app/`
 
 ## Endpoints
 

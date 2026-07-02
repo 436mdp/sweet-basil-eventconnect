@@ -27,7 +27,7 @@ Add all variables from `.env.example` in Vercel Project Settings → Environment
 | `NEXT_PUBLIC_SUPABASE_URL` | Production, Preview, Development |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Production, Preview, Development |
 | `SUPABASE_SERVICE_ROLE_KEY` | Production, Preview |
-| `NEXT_PUBLIC_APP_URL` | Production (`https://your-domain.vercel.app`) |
+| `NEXT_PUBLIC_APP_URL` | Production (`https://evc-sweetbasil.vercel.app/`) |
 | `GUEST_SESSION_SECRET` | Production, Preview |
 
 ### 4. Deploy
@@ -38,10 +38,10 @@ Click **Deploy**. Vercel will run `npm run build` automatically.
 
 In Supabase Dashboard → Authentication → URL Configuration:
 
-- **Site URL**: `https://your-domain.vercel.app`
+- **Site URL**: `https://evc-sweetbasil.vercel.app/`
 - **Redirect URLs**:
-  - `https://your-domain.vercel.app/auth/callback`
-  - `http://localhost:3000/auth/callback` (for local dev)
+  - `https://evc-sweetbasil.vercel.app/`
+  - `https://evc-sweetbasil.vercel.app/` (for local dev)
 
 ### 6. Verify Production
 
